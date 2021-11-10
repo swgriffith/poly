@@ -2,6 +2,11 @@
 	"name": "poly",
 	"dockerFile": "Dockerfile",
 
+	// do not change these if you want Docker in Docker support
+	"runArgs": ["--init", "--privileged"],
+	"mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],
+	"overrideCommand": false,
+	
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "zsh"
 	},
@@ -27,7 +32,8 @@
 		"gruntfuggly.todo-tree",
 		"mutantdino.resourcemonitor",
 		"humao.rest-client",
-		"ms-azuretools.vscode-azurefunctions"
+		"ms-azuretools.vscode-azurefunctions",
+		"ms-azuretools.vscode-docker"
 	],
 
 	// Use 'onCreateCommand' to run commands as part of container creation.
