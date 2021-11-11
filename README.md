@@ -87,7 +87,6 @@ Now lets create our container instance!
 # Set ENV Vars
 resourceGroup=myRG
 region=eastus
-acrName=myacr$RANDOM
 # Create a resource group.
 az group create --name $resourceGroup --location $region
 
@@ -173,4 +172,17 @@ containerAppFQDN=$(az containerapp create \
   --query configuration.ingress.fqdn -o tsv)
 
 curl https://$containerAppFQDN/api/myhttpfunction\?name=Steve
+```
+
+### AKS Deployment
+
+```bash
+# Create an AKS cluster
+az aks create -g $resourceGroup -n democluster --generate-ssh-keys 
+az aks update -n democluster -g $resourceGroup --attach-acr $(az acr show -g $resourceGroup -n $acrName --query id -o tsv)
+
+az aks get-credentials -g $resourceGroup -n democluster
+
+az acr login -n $acrName 
+func kubernetes deploy --name akstest --registry $acrFQDN
 ```
