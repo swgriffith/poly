@@ -191,5 +191,10 @@ kubectl create secret docker-registry regcred \
 --docker-password=$acrPasswd
 
 az acr login -n $acrName 
+
+# Lets have a look at the deployment manifest
+func kubernetes deploy --name akstest --pull-secret regcred --registry $acrFQDN --dry-run > deployment.yaml
+
+# Now lets run it
 func kubernetes deploy --name akstest --pull-secret regcred --registry $acrFQDN
 ```
