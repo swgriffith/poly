@@ -15,13 +15,15 @@
 		"cpus": 4
 	},
 	
-	//forward ports for the app
-	// "forwardPorts": [
-	// ],
+	// forward ports for the app
+	"forwardPorts": [
+		7071
+	],
 
-	//add labels
-	// "portsAttributes": {
-	// },
+	// add labels
+	"portsAttributes": {
+		"7071": { "label": "function" }
+	},
 
 	// Install extensions
 	"extensions": [
