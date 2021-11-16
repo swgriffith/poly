@@ -61,7 +61,7 @@ az functionapp create \
   --storage-account $storageName \
   --consumption-plan-location $region \
   --resource-group $resourceGroup \
-  --functions-version 3
+  --functions-version 4
 ```
 
 Now we can deploy our function
