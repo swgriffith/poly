@@ -5,4 +5,4 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsof
 RUN dpkg -i packages-microsoft-prod.deb
 
 RUN apt update
-RUN apt install -y dotnet-sdk-3.1 azure-functions-core-tools-3
+RUN apt install -y azure-functions-core-tools-4
